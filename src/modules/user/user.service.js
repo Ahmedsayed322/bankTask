@@ -15,6 +15,8 @@ export const createUser = async (req) => {
   });
   const accountNumber = randomUUID();
   await BankAccount.create({ userId: user._id, accountNumber });
+ const token = user.generateToken();
+  return token;
 };
 export const logIn = async (req) => {
   const { email, password } = req.body;

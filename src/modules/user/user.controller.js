@@ -11,7 +11,11 @@ userRouter.post(
   authRateLimit,
   Validation(registerValidation),
   async (req, res, next) => {
-    await createUser(req);
+    const accessToken = await createUser(req);
+    res.cookie('accessToken', accessToken, {
+      maxAge: 24 * 60 * 60 * 1000,
+      httpOnly: true,
+    });
     return successResponse(res, {
       statusCode: 201,
       message: 'user created.',
