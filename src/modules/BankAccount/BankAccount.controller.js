@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { UserAuth } from '../../middlewares/auth.js';
 import successResponse from '../../utils/responses/success.response.js';
 import { getBankAccountDetails, getStatement } from './BankAccount.service.js';
-import Validation from '../../middlewares/auth.validation.js';
+import Validation from '../../middlewares/validator.js';
 import { statementValidation } from './BankAccount.validation.js';
 const bankAccountRouter = Router();
 bankAccountRouter.get('/me', UserAuth, async (req, res, next) => {

@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import successResponse from '../../utils/responses/success.response.js';
 import { createUser, logIn } from './user.service.js';
-import Validation from '../../middlewares/auth.validation.js';
+import Validation from '../../middlewares/validator.js';
 import { loginValidation, registerValidation } from './user.validation.js';
 import { authRateLimit } from '../../utils/ratelimiter/ratelimit.js';
 

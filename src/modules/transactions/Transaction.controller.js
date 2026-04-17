@@ -9,7 +9,7 @@ import {
   transfer,
   withdraw,
 } from './Transaction.service.js';
-import Validation from '../../middlewares/auth.validation.js';
+import Validation from '../../middlewares/validator.js';
 import {
   depositValidation,
   getTransactionByIdValidation,

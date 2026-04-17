@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { changeStatus } from './admin.service.js';
-import Validation from '../../middlewares/auth.validation.js';
+import Validation from '../../middlewares/validator.js';
 import { changeStatusValidation } from './admin.validation.js';
 import successResponse from '../../utils/responses/success.response.js';
 
