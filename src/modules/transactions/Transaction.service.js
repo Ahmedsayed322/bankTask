@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import BankAccount from '../../DB/models/BankAccount.js';
 import Transaction from '../../DB/models/transactions.js';
 import { status } from '../../utils/enums/status.enum.js';
@@ -115,6 +116,12 @@ export const transfer = async (req) => {
   const receiver = await BankAccount.findOne({ accountNumber });
   if (!receiver) {
     throw new ApiError('account not found', 404);
+  }
+  if (
+    receiver.status === status.frozen ||
+    receiver.status === status.inActive
+  ) {
+    throw new ApiError('receiver account is frozen or its inactive', 400);
   }
   const senderBalanceBefore = myBankAccount.balance;
   const senderBalanceAfter = myBankAccount.balance - amount;
